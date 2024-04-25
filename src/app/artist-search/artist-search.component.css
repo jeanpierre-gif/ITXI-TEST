@@ -1,0 +1,356 @@
+.container {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    z-index: 0;
+    background-color: grey;
+}
+.header svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+#wifi-loader {
+    --background: #62abff;
+    --front-color: #4f29f0;
+    --back-color: #c3c8de;
+    --text-color: #414856;
+    width: 64px;
+    height: 64px;
+    border-radius: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #wifi-loader svg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #wifi-loader svg circle {
+    position: absolute;
+    fill: none;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: rotate(-100deg);
+    transform-origin: center;
+  }
+  
+  #wifi-loader svg circle.back {
+    stroke: var(--back-color);
+  }
+  
+  #wifi-loader svg circle.front {
+    stroke: var(--front-color);
+  }
+  
+  #wifi-loader svg.circle-outer {
+    height: 86px;
+    width: 86px;
+  }
+  
+  #wifi-loader svg.circle-outer circle {
+    stroke-dasharray: 62.75 188.25;
+  }
+  
+  #wifi-loader svg.circle-outer circle.back {
+    animation: circle-outer135 1.8s ease infinite 0.3s;
+  }
+  
+  #wifi-loader svg.circle-outer circle.front {
+    animation: circle-outer135 1.8s ease infinite 0.15s;
+  }
+  
+  #wifi-loader svg.circle-middle {
+    height: 60px;
+    width: 60px;
+  }
+  
+  #wifi-loader svg.circle-middle circle {
+    stroke-dasharray: 42.5 127.5;
+  }
+  
+  #wifi-loader svg.circle-middle circle.back {
+    animation: circle-middle6123 1.8s ease infinite 0.25s;
+  }
+  
+  #wifi-loader svg.circle-middle circle.front {
+    animation: circle-middle6123 1.8s ease infinite 0.1s;
+  }
+  
+  #wifi-loader svg.circle-inner {
+    height: 34px;
+    width: 34px;
+  }
+  
+  #wifi-loader svg.circle-inner circle {
+    stroke-dasharray: 22 66;
+  }
+  
+  #wifi-loader svg.circle-inner circle.back {
+    animation: circle-inner162 1.8s ease infinite 0.2s;
+  }
+  
+  #wifi-loader svg.circle-inner circle.front {
+    animation: circle-inner162 1.8s ease infinite 0.05s;
+  }
+  
+  #wifi-loader .text {
+    position: absolute;
+    bottom: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: lowercase;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+  
+  #wifi-loader .text::before, #wifi-loader .text::after {
+    content: attr(data-text);
+  }
+  
+  #wifi-loader .text::before {
+    color: var(--text-color);
+  }
+  
+  #wifi-loader .text::after {
+    color: var(--front-color);
+    animation: text-animation76 3.6s ease infinite;
+    position: absolute;
+    left: 0;
+  }
+  
+  @keyframes circle-outer135 {
+    0% {
+      stroke-dashoffset: 25;
+    }
+  
+    25% {
+      stroke-dashoffset: 0;
+    }
+  
+    65% {
+      stroke-dashoffset: 301;
+    }
+  
+    80% {
+      stroke-dashoffset: 276;
+    }
+  
+    100% {
+      stroke-dashoffset: 276;
+    }
+  }
+  
+  @keyframes circle-middle6123 {
+    0% {
+      stroke-dashoffset: 17;
+    }
+  
+    25% {
+      stroke-dashoffset: 0;
+    }
+  
+    65% {
+      stroke-dashoffset: 204;
+    }
+  
+    80% {
+      stroke-dashoffset: 187;
+    }
+  
+    100% {
+      stroke-dashoffset: 187;
+    }
+  }
+  
+  @keyframes circle-inner162 {
+    0% {
+      stroke-dashoffset: 9;
+    }
+  
+    25% {
+      stroke-dashoffset: 0;
+    }
+  
+    65% {
+      stroke-dashoffset: 106;
+    }
+  
+    80% {
+      stroke-dashoffset: 97;
+    }
+  
+    100% {
+      stroke-dashoffset: 97;
+    }
+  }
+  
+  @keyframes text-animation76 {
+    0% {
+      clip-path: inset(0 100% 0 0);
+    }
+  
+    50% {
+      clip-path: inset(0);
+    }
+  
+    100% {
+      clip-path: inset(0 0 0 100%);
+    }
+  }
+   
+.SearchBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SearchInput {
+    padding: 10px 40px; 
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+    width: 400px;
+    height: 30px;
+    text-align: center;
+    
+}
+.Logo {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+
+.Logo svg {
+    width: 34px;
+    height: 25px;
+}
+
+.ListItem{
+  background-color: grey;
+    padding-top:40px;
+}
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 0;
+    list-style-type: none;
+    margin: 0;
+}
+
+.card { 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:10px;
+    /* justify-content: flex-start; */
+    overflow: hidden;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 24rem;
+    height: 10rem;
+    margin-bottom:15px;
+    cursor: pointer;
+    /* margin: 3rem auto 0; */
+}
+
+.card-image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.card-content {
+    position: relative;
+    z-index: 10;
+}
+.card-title {
+    z-index: 10;
+    margin-top: 7.75rem;
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #fff;
+}
+.card-rating{
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.card-description {
+    z-index: 10;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: #d2d6dc;
+}
+@media(max-width:970px){
+    .card{
+        max-width: 20rem;
+    }
+}
+@media(max-width:832px){
+    .card{
+        max-width:14rem;
+    }
+}
+@media (max-width:500px){
+    /* .SearchBox{
+        margin-right: 30px;
+    } */
+    .SearchInput{
+       width:300px;
+    }
+    .card{
+        width:130px;
+        height:308px;
+    }
+    .card-content {
+        position: relative;
+        z-index: 10;
+        margin-left:-20px
+    }
+   .card-title{
+    margin-top:10.75rem;
+   }
+   .card-rating{
+    display: flex;
+    flex-direction: column;
+   }
+}
+@media (max-width:400px){
+    /* .SearchBox{
+        margin-right: 30px;
+    } */
+    .SearchInput{
+       width:200px;
+    }
+    @media (max-width: 380px) {
+        .card {
+            max-width:110px
+        }
+    }
+}

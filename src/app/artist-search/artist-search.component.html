@@ -1,0 +1,52 @@
+<section class="header">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 300"><path fill="#a4c9d8" fill-opacity="1" d="M0,192L24,197.3C48,203,96,213,144,218.7C192,224,240,224,288,218.7C336,213,384,203,432,176C480,149,528,107,576,117.3C624,128,672,192,720,218.7C768,245,816,235,864,229.3C912,224,960,224,1008,234.7C1056,245,1104,267,1152,250.7C1200,235,1248,181,1296,181.3C1344,181,1392,235,1416,261.3L1440,288L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"/></svg>
+   </section>
+<div class="container">
+   
+    <div class="SearchBox" [@moveToTop]="state">
+    <input type="text" class="SearchInput" [(ngModel)]="searchQuery" 
+    placeholder="Search for an artist..." (keypress)="handleKeyPress($event)"  >
+    <button class="SearchBtn">
+        <span class="Logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 50 50" fill="#000000">
+                <path d="M21,3C11.621094,3,4,10.621094,4,20c0,9.378906,7.621094,17,17,17c3.710938,0,7.140625-1.195312,9.9375-3.21875L44.09375,46.90625l2.8125-2.8125L33.90625,33.90625C36.460938,30.929688,38,27.066406,38,23c0-9.378906-7.621094-17-17-17zm0,2c8.296875,0,15,6.703125,15,15c0,8.296875-6.703125,15-15,15c-8.296875,0-15-6.703125-15-15C6,11.703125,12.703125,5,21,5z"></path>
+            </svg>
+        </span>
+    </button>
+</div>
+<div id="wifi-loader" style="margin-top:25%" *ngIf="loading">
+    <svg class="circle-outer" viewBox="0 0 86 86">
+        <circle class="back" cx="43" cy="43" r="40"></circle>
+        <circle class="front" cx="43" cy="43" r="40"></circle>
+        <circle class="new" cx="43" cy="43" r="40"></circle>
+    </svg>
+    <svg class="circle-middle" viewBox="0 0 60 60">
+        <circle class="back" cx="30" cy="30" r="27"></circle>
+        <circle class="front" cx="30" cy="30" r="27"></circle>
+    </svg>
+    <svg class="circle-inner" viewBox="0 0 34 34">
+        <circle class="back" cx="17" cy="17" r="14"></circle>
+        <circle class="front" cx="17" cy="17" r="14"></circle>
+    </svg>
+</div>
+<div class="ListItem" *ngIf="!loading" [@slideUpFromBottom]="state2">
+    <ul class="card-list" >
+        <li *ngFor="let artist of searchResults" (click)="viewArtistAlbums(artist.id)">
+            <article class="card">
+                <img [src]="artist.images[0].url" alt="Artist Image" class="card-image">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h3 class="card-title" [ngStyle]="{'font-size': artist.name.length > 14 ? '16px' : '30px'}">{{artist.name}}</h3>
+                    <div class="card-rating">
+                        <div class="card-description">{{artist.followers.total | followers}} followers</div>
+                        <igc-rating [value]="(artist.popularity / 20 )" min="1" max="5" style="color: yellow; font-size: 20px;"></igc-rating>
+                    </div>
+                </div>
+            </article>
+        </li>
+    </ul>
+</div>
+
+</div>
+
+

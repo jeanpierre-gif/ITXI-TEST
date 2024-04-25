@@ -1,0 +1,91 @@
+<div class="body">
+<div class="container" [style.background-color]="getRandomColor()" >
+<img [src]="albums[0]?.images[0]?.url">
+  <div class="content">
+    <span
+      class="Text encore-text-body-small "
+      data-encore-id="text"
+      >Playlist</span
+    >
+    <span
+      dir="auto"
+      draggable="true"
+      data-testid="entityTitle"
+      >
+      <h1
+        class="Text encore-text-headline-large"
+      
+        [ngStyle]="{'font-size': albums[0]?.artists[0]?.name.length > 14 ? '5rem' : '6rem'}"
+      >
+      {{ albums[0]?.artists[0]?.name }}
+    </h1></span
+    ><span
+      class="Text encore-text-body-small "
+      data-encore-id="text"
+      ><div class=" ">
+        New music from {{ albums[0]?.artists[0]?.name }}
+        
+      </div></span
+    >
+    <div class="textinfo">
+      <div class="small-text text-div">
+        
+        
+      <span
+        class="Text encore-text-body-small small-text"
+        data-encore-id="text"
+        >
+        {{albums.length}} albums
+        </span
+      >
+    </div>
+  </div>
+</div>
+</div>
+<div class="Albums-content" style="background-color: black;">
+  <div class="album-info">
+    <ul class="album-list-loader" *ngIf="loading">
+      <li *ngFor="let item of loadersArray" >
+        <div class="album-card" >
+      <ngx-skeleton-loader
+      count="1"
+      [theme]="{ 
+        'width':'90%',
+        'border-radius': '5px',
+        height: '60%',
+        'background-color': 'grey',
+        border: 'none',
+      }"
+    ></ngx-skeleton-loader>
+    <ngx-skeleton-loader appearance="line" animation="pulse"
+    [theme]="{
+      width:'90%',
+    padding:'0',
+    'border-radius': '15px',
+    }"
+      count="1"
+    ></ngx-skeleton-loader>
+    <ngx-skeleton-loader appearance="line" animation="pulse"
+    [theme]="{
+      width:'60%',
+    padding:'0',
+    'border-radius': '15px',
+    }"
+      count="1"
+    ></ngx-skeleton-loader>
+    </div>
+  </li>
+  </ul>
+<ul class="album-list" *ngIf="!loading">
+      <li *ngFor="let item of albums" (click)="previewOnspotify(item)">
+    
+        <div class="album-card" >
+          <img [src]="item?.images[0]?.url">
+          <h1 class="album-title">{{ truncateString(item?.name, 19) }}</h1>
+          <h2 class="album-artist">{{ getArtistNames(item?.artists) }}</h2>
+          <h2 class="album-artist">{{ item?.release_date }} || {{ item?.total_tracks }} {{ item?.total_tracks === 1 ? 'Track' : 'Tracks' }}</h2>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
